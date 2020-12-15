@@ -57,8 +57,8 @@ depth_first_search(vertex s)
     mark s as finished 
 ```
 
-When the method in the `DirecetedGraph` class, `(depth_first_search) or whatever you name it`, that initiates the depth
-first search is called, it should first initialize all the vertices to the undiscovered state and begin the search at
+When the method in the `DirecetedGraph` class, that initiates the depth first search is called, it should first 
+initialize all the vertices to the undiscovered state and begin the search at
 the vertex that corresponds to the first name in the input file.
 
 - Initialize all the state and start with first class in input file

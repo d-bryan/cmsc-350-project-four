@@ -3,7 +3,9 @@
  * Author: Dylan Bryan
  * Date: 12/10/20, 9:42 AM
  * Project: ProjectFour
- * Purpose: Lorem ipsum dolor sit amet
+ * Purpose: Main class which initializes the Directed Graph and
+ * JFileChooser class. Allows the user to read in a file and create
+ * graph objects.
  ******************************************************************************/
 
 package project;
@@ -15,6 +17,13 @@ import java.util.*;
 
 public class Main {
 
+  /**
+   * Reads the file once and creates a set based on the number of
+   * unique vertices in the file
+   * @param selectedFile FILE file selected by the user
+   * @return Set set of unique vertices for passing into directed graph
+   * @throws FileNotFoundException
+   */
   public static Set<String> getTotalItems(File selectedFile) throws FileNotFoundException {
     Set<String> totalItems = new LinkedHashSet<>();
     // read in the selected file
@@ -31,6 +40,13 @@ public class Main {
     return totalItems;
   } // end getTotalItems method
 
+  /**
+   * Creates a Directed Graph object and adds items to the graph
+   * @param totalItems INTEGER number of unique items from Set
+   * @param selectedFile FILE selected file by user
+   * @return DirectedGraph graph object
+   * @throws FileNotFoundException
+   */
   public static DirectedGraph addItemsToGraph(Set<String> totalItems, File selectedFile)
           throws FileNotFoundException {
     // construct the graph
@@ -60,7 +76,7 @@ public class Main {
   public static void main(String[] args) {
     try {
       // get the main directory to choose from
-      JFileChooser file = new JFileChooser(new File("."));
+      JFileChooser file = new JFileChooser(new File("src"));
       int option = file.showOpenDialog(null);
       // if the user selects the open button
       if (option == JFileChooser.APPROVE_OPTION) {

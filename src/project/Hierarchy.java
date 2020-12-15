@@ -3,7 +3,8 @@
  * Author: Dylan Bryan
  * Date: 12/10/20, 9:43 AM
  * Project: ProjectFour
- * Purpose: Lorem ipsum dolor sit amet
+ * Purpose: Provides a hierarchical representation of the graph
+ * as an output in the console
  ******************************************************************************/
 
 package project;

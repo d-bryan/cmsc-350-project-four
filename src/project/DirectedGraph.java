@@ -18,7 +18,8 @@ public class DirectedGraph<T> implements Graph<T> {
   public Hierarchy hierarchy;
 
   /**
-   * Creates a new graph
+   * Directed Graph constructor which creates a
+   * new graph object
    * @param numberOfVertices INTEGER number of vertices
    * @param totalItems SET total vertices
    */
@@ -32,7 +33,7 @@ public class DirectedGraph<T> implements Graph<T> {
       vertexList.add(new Vertex(item));
     } // end while loop
 
-    // initialize other helper classes
+    // initialize other helper classes and bind graph object
     parenthesizedList = new ParenthesizedList(this);
     hierarchy = new Hierarchy(this);
   } // end DirectedGraph constructor
@@ -43,10 +44,13 @@ public class DirectedGraph<T> implements Graph<T> {
    * @return LIST
    */
   public List<Vertex> depthFirstSearch(int start) {
+    // create list object
     List<Vertex> list = new ArrayList<>();
+    // recursive call to depthFistSearch
     depthFirstSearch(start, start, list);
+
     return list;
-  }
+  } // end depthFirstSearch method
 
   /**
    * Recursive call for Depth First Search, adds items to the list
@@ -80,12 +84,15 @@ public class DirectedGraph<T> implements Graph<T> {
     int index = 0;
     Vertex vertex = null;
 
+    // loop over each item in the vertex list
     for (int i = 0; i < vertexList.size(); i++) {
+      // compare the current element to edge
       String currentItem = vertexList.get(i).getElement().toString();
       if (currentItem.equalsIgnoreCase(vertexTwo)) {
         vertex = vertexList.get(i);
         break;
       }
+      // if current item equals vertex one
       if (currentItem.equalsIgnoreCase(vertexOne)) {
         index = i;
       } // end if statement
@@ -97,28 +104,6 @@ public class DirectedGraph<T> implements Graph<T> {
 
   } // end addEdge method
 
-  /**
-   * NOT REQUIRED CAN REMOVE todo: remove this
-   */
-  public void additionalDisplay() {
-    System.out.println("Adjacency List:\n");
-
-    for (Vertex vertex : vertexList) {
-      List<Vertex> adjacentVertices = vertex.getAdjacentVertices();
-      StringBuilder stringBuilder = new StringBuilder();
-      stringBuilder.append("[");
-      for (int i = 0; i < adjacentVertices.size(); i++) {
-        if (i > 0) {
-          stringBuilder.append(", ");
-        }
-        stringBuilder.append(adjacentVertices.get(i).getElement().toString());
-      }
-      stringBuilder.append("]");
-      System.out.println("Edges from " + vertex.getElement() +
-              " to : " + stringBuilder.toString() + " -> Degree: " + getDegree(vertex));
-    } // end for loop
-  } // end additionalDisplay method
-
   @Override
   public int getNumberOfVertices() {
     return numberOfVertices;
@@ -127,11 +112,13 @@ public class DirectedGraph<T> implements Graph<T> {
   @Override
   public int getDegree(Vertex vertex) {
     int degree;
-
     // loop over vertices in vertex list
     List<Vertex> adjacency = vertex.getAdjacentVertices();
+    // create a new set for unique vertices
     Set<String> vertices = new LinkedHashSet<>();
+    // add each item to the set
     adjacency.forEach(item -> vertices.add(item.getElement().toString()));
+    // count the number of items in the set
     degree = (int) vertices.stream().count();
 
     return degree;

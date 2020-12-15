@@ -3,7 +3,8 @@
  * Author: Dylan Bryan
  * Date: 12/10/20, 9:44 AM
  * Project: ProjectFour
- * Purpose: Lorem ipsum dolor sit amet
+ * Purpose: Provides a parenthesized list representation of the graph
+ * as output in the console
  ******************************************************************************/
 
 package project;
@@ -24,13 +25,6 @@ public class ParenthesizedList<T> implements DFSActions<T> {
   public ParenthesizedList(DirectedGraph graph) {
     this.graph = graph;
   } // end ParenthesizedList constructor
-
-  public Set<String> getAdjacentSet(List<Vertex> list) {
-    Set<String> vertices = new LinkedHashSet<>();
-    list.forEach(item -> vertices.add(item.getElement().toString()));
-
-    return vertices;
-  } // end getAdjacentSet method
 
   /**
    * Creates the string to add to output for unreachable items in graph
@@ -84,8 +78,6 @@ public class ParenthesizedList<T> implements DFSActions<T> {
     } // end for loop
   } // end processVertex method
 
-  //  ( ClassA ( ClassC * ClassE ( ClassB ( ClassD ClassG ) ClassF ClassH ) ClassJ ( ClassB ( ClassD ClassG ))))
-
   @Override
   public void descend(Vertex parent, Vertex child, int depth) {
     String left = "(";
@@ -102,7 +94,6 @@ public class ParenthesizedList<T> implements DFSActions<T> {
     } else {
       stringBuilder.append(toAppend + right);
     } // end if/else statement
-
   } // end descend method
 
   @Override

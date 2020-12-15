@@ -3,7 +3,7 @@
  * Author: Dylan Bryan
  * Date: 12/12/20, 9:18 AM
  * Project: ProjectFour
- * Purpose: Lorem ipsum dolor sit amet
+ * Purpose: Methods used by the Directed Graph class
  ******************************************************************************/
 
 package project;

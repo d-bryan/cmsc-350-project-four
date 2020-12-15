@@ -76,7 +76,7 @@ public class Main {
   public static void main(String[] args) {
     try {
       // get the main directory to choose from
-      JFileChooser file = new JFileChooser(new File("src"));
+      JFileChooser file = new JFileChooser(new File("."));
       int option = file.showOpenDialog(null);
       // if the user selects the open button
       if (option == JFileChooser.APPROVE_OPTION) {

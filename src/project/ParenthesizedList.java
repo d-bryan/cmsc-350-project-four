@@ -48,8 +48,9 @@ public class ParenthesizedList<T> implements DFSActions<T> {
     } // end while loop
     // add to unreachable string
     vertexListSet.forEach(item -> unreachable.append(item.getElement().toString() + " "));
-    // append additional text
-    unreachable.append("is unreachable");
+    if (unreachable.length() > 0) {
+      unreachable.append("is unreachable");
+    } // end if statement
 
     return unreachable.toString();
   } // end unreachable method
